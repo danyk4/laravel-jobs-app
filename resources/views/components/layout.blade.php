@@ -68,8 +68,7 @@
                     </div>
                 </div>
             </div>
-            <div
-                    class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button type="button"
                         class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                     <span class="absolute -inset-1.5"></span>
@@ -134,8 +133,10 @@
     </div>
 </nav>
 <header class="bg-white shadow">
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
+
+        <x-button href="/jobs/create">Create Job</x-button>
     </div>
 </header>
 <main>
