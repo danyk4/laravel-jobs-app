@@ -69,51 +69,17 @@
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button type="button"
-                        class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                    <span class="absolute -inset-1.5"></span>
-                    <span class="sr-only">View notifications</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                         stroke-width="1.5" stroke="currentColor"
-                         aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
-                    </svg>
-                </button>
+                @guest()
+                    <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
+                    <x-nav-link href="/register" :active="request()->is('register')">Register</x-nav-link>
+                @endguest
+                @auth()
+                    <form method="POST" action="/logout">
+                        @csrf
 
-                <!-- Profile dropdown -->
-                <div class="relative ml-3">
-                    <div>
-                        <button type="button"
-                                class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                                id="user-menu-button" aria-expanded="false"
-                                aria-haspopup="true">
-                            <span class="absolute -inset-1.5"></span>
-                            <span class="sr-only">Open user menu</span>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 width="1.5em" height="1.5em"
-                                 viewBox="0 0 24 24">
-                                <g fill="none" stroke="currentColor"
-                                   stroke-dasharray="28" stroke-dashoffset="28"
-                                   stroke-linecap="round" stroke-width="1">
-                                    <path
-                                            d="M4 21V20C4 16.6863 6.68629 14 10 14H14C17.3137 14 20 16.6863 20 20V21">
-                                        <animate fill="freeze"
-                                                 attributeName="stroke-dashoffset"
-                                                 dur="0.4s" values="28;0"/>
-                                    </path>
-                                    <path
-                                            d="M12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7C16 9.20914 14.2091 11 12 11Z">
-                                        <animate fill="freeze"
-                                                 attributeName="stroke-dashoffset"
-                                                 begin="0.5s" dur="0.4s"
-                                                 values="28;0"/>
-                                    </path>
-                                </g>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+                        <x-form-button>Log Out</x-form-button>
+                    </form>
+                @endauth()
             </div>
         </div>
     </div>
